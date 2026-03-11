@@ -11,46 +11,43 @@ const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#
 
 function useScrambleReveal(text: string, trigger: boolean, duration = 1400) {
   const [display, setDisplay] = useState("");
-  const frameRef = useRef<number | null>(null);
-  const textRef = useRef(text);
-  const hasPlayed = useRef(false);
+  const [done, setDone] = useState(false);
 
-  // Update the ref when text changes (language switch)
+  // When language changes after animation finished, update immediately
   useEffect(() => {
-    textRef.current = text;
-    // If already finished playing, just show the new text immediately
-    if (hasPlayed.current) {
-      setDisplay(text);
-    }
-  }, [text]);
+    if (done) setDisplay(text);
+  }, [text, done]);
 
-  // Only run the scramble animation once on first trigger
+  // Run scramble animation when triggered
   useEffect(() => {
-    if (!trigger || hasPlayed.current) return;
-    hasPlayed.current = true;
-    const currentText = textRef.current;
+    if (!trigger) return;
+
+    let cancelled = false;
     const startTime = performance.now();
 
-    function animate(now: number) {
-      const elapsed = now - startTime;
+    function animate() {
+      if (cancelled) return;
+      const elapsed = performance.now() - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      const revealedCount = Math.floor(progress * currentText.length);
+      const revealedCount = Math.floor(progress * text.length);
       let result = "";
-      for (let i = 0; i < currentText.length; i++) {
-        if (currentText[i] === " ") result += " ";
-        else if (i < revealedCount) result += currentText[i];
+      for (let i = 0; i < text.length; i++) {
+        if (text[i] === " ") result += " ";
+        else if (i < revealedCount) result += text[i];
         else result += CHARS[Math.floor(Math.random() * CHARS.length)];
       }
       setDisplay(result);
-      if (progress < 1) frameRef.current = requestAnimationFrame(animate);
-      else setDisplay(textRef.current); // Use latest text at the end
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setDisplay(text);
+        setDone(true);
+      }
     }
 
-    frameRef.current = requestAnimationFrame(animate);
-    return () => {
-      if (frameRef.current) cancelAnimationFrame(frameRef.current);
-    };
-  }, [trigger, duration]);
+    requestAnimationFrame(animate);
+    return () => { cancelled = true; };
+  }, [trigger, text, duration]);
 
   return display;
 }
