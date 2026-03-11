@@ -28,10 +28,10 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
 export function Collab() {
   const { t } = useI18n();
   const stats = [
-    { icon: Users, label: t("collab.members"), value: 500, suffix: "+" },
-    { icon: Award, label: t("collab.years"), value: 3, suffix: "" },
-    { icon: Shield, label: t("collab.classes"), value: 40, suffix: "+" },
-    { icon: MapPin, label: t("collab.hq"), value: 1, suffix: " HQ" },
+    { icon: Shield, label: t("collab.sqm"), value: 600, suffix: "m²" },
+    { icon: Award, label: t("collab.sauna"), value: 1, suffix: "" },
+    { icon: Users, label: t("collab.cowork"), value: 1, suffix: "" },
+    { icon: MapPin, label: t("collab.since"), value: 2025, suffix: "" },
   ];
 
   return (

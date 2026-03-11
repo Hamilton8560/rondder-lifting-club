@@ -71,11 +71,11 @@ const translations = {
 
   // Collab
   "collab.label": { es: "// FORJADO EN", en: "// FORGED AT" },
-  "collab.desc": { es: "Rondder nació dentro de las paredes de American Iron — un gimnasio premium con estándares americanos en El Salvador. Cada diseño, cada lema, cada pieza de tela lleva la disciplina del hierro y el fuego de la comunidad que lo construyó.", en: "Rondder was born inside the walls of American Iron — a premium gym with American standards in El Salvador. Every design, every motto, every piece of fabric carries the discipline of the iron and the fire of the community that built it." },
-  "collab.members": { es: "Miembros", en: "Members" },
-  "collab.years": { es: "Años de Fuerza", en: "Years Strong" },
-  "collab.classes": { es: "Clases/Semana", en: "Classes/Week" },
-  "collab.hq": { es: "El Salvador", en: "El Salvador" },
+  "collab.desc": { es: "Rondder nació dentro de las paredes de American Iron — un gimnasio de lujo de 600m² con estándares americanos en El Salvador. Sauna, coworking y un espacio diseñado en blanco y negro al nivel de Ferrari o Equinox. Cada pieza de Rondder lleva el ADN de esta comunidad.", en: "Rondder was born inside the walls of American Iron — a 600m² luxury gym with American standards in El Salvador. Sauna, coworking, and a black-and-white space designed to the level of Ferrari or Equinox. Every piece of Rondder carries the DNA of this community." },
+  "collab.sqm": { es: "Metros Cuadrados", en: "Square Meters" },
+  "collab.sauna": { es: "Sauna", en: "Sauna" },
+  "collab.cowork": { es: "Coworking", en: "Coworking" },
+  "collab.since": { es: "Desde", en: "Since" },
   "collab.partnership": { es: "Alianza Oficial", en: "Official Partnership" },
 
   // CTA
